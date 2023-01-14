@@ -1,11 +1,9 @@
 import React, {useEffect} from 'react';
 import {observer} from "mobx-react-lite";
-import {RootStoreContext, useStore} from './config.store'
-import {RootStore} from "./root-store";
+import {userStore} from "./user-store";
+import {postStore} from "./post-store";
 
 const UsersList = observer(() => {
-
-    const {userStore} = useStore()
 
     useEffect(() => {
         userStore.fetchUsers()
@@ -26,8 +24,6 @@ const UsersList = observer(() => {
 })
 
 const PostList = observer(() => {
-
-    const {postStore} = useStore()
 
     useEffect(() => {
         postStore.fetchPosts()
@@ -65,17 +61,17 @@ const App = () => {
     );
 }
 
-const RootStoreExampleApp = () => {
+const SingletonBindingExampleApp = () => {
     return (
-        <RootStoreContext.Provider value={new RootStore()}>
+        <div>
             <div className="bold mt-1">
-                Root store:
+                Singleton store:
             </div>
             <div className="my-2">
                 <App />
             </div>
-        </RootStoreContext.Provider>
+        </div>
     );
 };
 
-export {RootStoreExampleApp};
+export {SingletonBindingExampleApp};

@@ -11,6 +11,9 @@ import {ToastContainer} from "react-toastify";
 import {MobxVSRedux} from "../redux-vs-mobx";
 import {MobxReactBindings} from "../mobx-react-bindings";
 import {setDocTitle} from "../shared/lib";
+import {RootStoreExampleApp} from "../mobx-react-bindings/root-store";
+import {SingletonBindingExampleApp} from "../mobx-react-bindings/singleton";
+import {LocalStoreApp} from "../mobx-react-bindings/local-store";
 
 const Layout = () => {
     return (
@@ -69,12 +72,26 @@ const router = createBrowserRouter([
             {
                 path: 'mobx-react-bindings',
                 element: <MobxReactBindings />,
-                loader: () => setDocTitle('Mobx React bindings')
+                loader: () => setDocTitle('Mobx React bindings'),
+                children: [
+                    {
+                        path: '',
+                        element: <RootStoreExampleApp />
+                    },
+                    {
+                        path: 'singleton',
+                        element: <SingletonBindingExampleApp />
+                    },
+                    {
+                        path: 'local-store',
+                        element: <LocalStoreApp />
+                    }
+                ]
             },
             {
                 path: 'mobx-vs-redux',
                 element: <MobxVSRedux />,
-                loader: () => setDocTitle('Mobx VS Redux')
+                loader: () => setDocTitle('Mobx VS Redux'),
             },
         ]
     }

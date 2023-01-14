@@ -1,15 +1,23 @@
 import React from 'react';
-import {RootStoreExampleApp} from "./root-store";
+import {Link, Outlet} from 'react-router-dom'
 
 const MobxReactBindings = () => {
     return (
         <div className='counter'>
-            <div className="bold mt-1">
-                Root store
-            </div>
-           <div className="my-2">
-               <RootStoreExampleApp />
-           </div>
+            <h2>React Mobx bindings</h2>
+            <ul>
+                <li style={{listStyle: 'disc'}}>
+                    <Link to=''>Root store</Link>
+                </li>
+                <li style={{listStyle: 'disc'}}>
+                    <Link to='singleton'>Singleton store</Link>
+                </li>
+                <li style={{listStyle: 'disc'}}>
+                    <Link to='local-store'>Locale store</Link>
+                </li>
+            </ul>
+            <hr className='my-2'/>
+           <Outlet />
         </div>
     );
 };

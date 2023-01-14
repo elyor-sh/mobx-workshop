@@ -19,6 +19,6 @@ export const setDevTools = () => {
         storeFn,
         baseMobxStore,
         todoStore,
-        mobxStore
+        mobxStore,
     });
 }
